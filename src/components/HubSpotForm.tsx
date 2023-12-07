@@ -7,7 +7,10 @@ const HubSpotForm = () => {
             formId='bf3d5ec5-ea34-4d75-b38b-4ac52418081d'
             onSubmit={() => console.log('Submit!')}
             onReady={(form: any) => {
-                setTimeout(() => {
+                setTimeout(async () => {
+                    const localApiRequest = await fetch("/customerDetail")
+                    const consumerID = await localApiRequest.json()
+                    
                     const x = form.contentWindow.document
                     const style = `<style>
                             .hs-button{
@@ -15,7 +18,7 @@ const HubSpotForm = () => {
                             }
                             </style>`
                     x.head.insertAdjacentHTML("beforeend", style)
-                    x.querySelector(`[name*="company_consumer_id"]`).value = "342234324234"
+                    x.querySelector(`[name*="company_consumer_id"]`).value = consumerID
                 }, 500)
             }}
             loading={<div>Loading...</div>}

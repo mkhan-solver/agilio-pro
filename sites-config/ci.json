@@ -28,6 +28,18 @@
         "functionName": "PagesGenerator"
       },
       {
+        "pluginName": "faq-00574",
+        "event": "API",
+        "functionName": "default",
+        "apiPath": "faq",
+        "sourceFiles": [
+          {
+            "root": "dist\\functions\\faq-00574",
+            "pattern": "*{.js,.ts}"
+          }
+        ]
+      },
+      {
         "pluginName": "customerDetail-00585",
         "event": "API",
         "functionName": "default",

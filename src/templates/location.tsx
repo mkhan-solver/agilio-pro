@@ -118,17 +118,17 @@ const Location: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
   document,
 }) => {
+  const [faqDataProvider, setFaqData] = React.useState([])
   const getCustomerId = async () => {
-    const localApiRequest = await fetch("/customerDetail")
+    const localApiRequest = await fetch("/customerDetail?type=faq")
     const response = await localApiRequest.json()
-
-    // const yextApiRequest = await fetch(`https://api.yextapis.com/v2/accounts?api_key=${YEXT_PUBLIC_YEXT_API_KEY}&v=20231128&name=${response?.businessName}`)
-    // const yextApiResponse =  await yextApiRequest.json()
-    // console.log('---->>>>>>',yextApiResponse)
+   
+    setFaqData(response?.response?.entities)
   }
   React.useEffect(() => {
     getCustomerId()
   }, []);
+
   const {
     name,
     description,
@@ -141,7 +141,7 @@ const Location: Template<TemplateRenderProps> = ({
       <Schema data={document} />
       <PageLayout data={document?._site} templateData={{ __meta, document }}>
         <Banner name={name} coverPhoto={c_coverPhoto} description={c_coverPhotoDescription} />
-        <Content description={description} data={document} />
+        <Content description={description} data={document} faq={faqDataProvider} />
         {/* {hours && <Hours title={"Hours"} hours={hours} />}
         <Carousel title={"Gallery"} photoGallery={photoGallery}></Carousel>
         <ContactSection address={address} phone={mainPhone} email={emails} /> */}

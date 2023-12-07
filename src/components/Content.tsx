@@ -3,15 +3,15 @@ import { Container, Row, Col, Form, Button, Accordion, Carousel } from "react-bo
 import Markdown from 'markdown-to-jsx';
 import HubspotForm from "./HubSpotForm";
 
-
 export interface AboutProps {
   description?: string;
   data: any;
+  faq: any;
 }
 
-const Content = ({ description, data }: AboutProps) => {
+const Content = ({ description, data, faq }: AboutProps) => {
   const { c_frontPageServiceList } = data
-  
+
   const hubSpotFormSubmit = async () => {
     var url = `https://api.hsforms.com/submissions/v3/integration/submit/${YEXT_PUBLIC_HUBSPOT_PORTAL_ID}/${YEXT_PUBLIC_HUBSPOT_FORM_ID}`
 
@@ -56,6 +56,9 @@ const Content = ({ description, data }: AboutProps) => {
           </Col>
           <Col lg={5} className='mb-lg-0 mb-4'>
             <div className='right-form-hero'>
+              <div className="form_img-top">
+                <img alt="van image" src={data?.c_truckImage?.url} className="w-100 img-fluid" />
+              </div>
               <div className='bg-white p-4 p-md-5 rounded shadow'>
                 <h2 className='mb-4'>Request a Free Quote</h2>
                 <HubspotForm />
@@ -129,7 +132,7 @@ const Content = ({ description, data }: AboutProps) => {
         <Row gap={4} className="flex-column-reverse flex-lg-row">
           {
             c_frontPageServiceList?.map((serviceList: any) => (
-              <Col lg={3} className='mb-3'>
+              <Col lg={3} key={serviceList?.name} className='mb-3'>
                 <div className='card-wrap bg-white rounded overflow-hidden shadow h-100'>
                   <div className='card-image-wrap'>
                     <img alt='Logo' src={serviceList?.photoGallery?.[0]?.image.url || `/src/assets/images/Heating-Repair-Replacement.jpg`} className='w-100 img-fluid card-image'></img>
@@ -185,7 +188,7 @@ const Content = ({ description, data }: AboutProps) => {
         </Row>
       </Container>
     </section>
-    {/* <section className='faq-section'>
+    <section className='faq-section'>
       <Container>
         <Row className='mb-4'>
           <Col>
@@ -195,23 +198,20 @@ const Content = ({ description, data }: AboutProps) => {
         <Row className='mb-4'>
           <Col>
             <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>What kind of services does Arctic Air offer?</Accordion.Header>
-                <Accordion.Body>
-                  We specialize in providing high-quality heating, ventilation, and air conditioning (HVAC) services to both residential and commercial customers. Our services include installation, repair, and maintenance of HVAC systems, as well as indoor air quality testing and improvement.
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>How long has Arctic Air been in business?</Accordion.Header>
-                <Accordion.Body>
-                  Our company has been serving customers in the HVAC industry for over 20 years. We have built a strong reputation for providing reliable and efficient services, and we are committed to continuing to deliver top-notch HVAC solutions to our clients.
-                </Accordion.Body>
-              </Accordion.Item>
+              {
+                faq?.map((value: any, index: number) => {
+                  return (<Accordion.Item key={value.question} eventKey={`${index}`}>
+                    <Accordion.Header>{value.question}</Accordion.Header>
+                    <Accordion.Body dangerouslySetInnerHTML={{ __html: value?.answerV2?.html }}></Accordion.Body>
+                  </Accordion.Item>)
+                })
+              }
+
             </Accordion>
           </Col>
         </Row>
       </Container>
-    </section> */}
+    </section>
     <section className='service-area-section'>
       <Row className=''>
         <Col lg={12}>

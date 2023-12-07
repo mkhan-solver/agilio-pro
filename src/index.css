@@ -444,6 +444,26 @@ footer {
   background: #294db6;
   color: #fff;
 }
+.form_img-top {
+  position: relative;
+  margin-bottom: -25px;
+}
+
+.form_img-top:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  left: 10%;
+  background: #000;
+  bottom: 10px;
+  border-radius: 20px;
+  opacity: 0.4;
+  width: 80%;
+  filter: blur(5px);
+}
+.form_img-top img {
+  position: relative;
+}
 @media (min-width: 1200px) {
 
   .container,
@@ -461,8 +481,13 @@ footer {
     padding: 10px 10px;
   }
 }
-
-@media (max-width: 992px) {
+@media (max-width: 1199px) {
+  .navbar-brand img {
+    transform: scale(1.1);
+    padding: 5px 15px;
+    background: #fff;
+    max-width: 90px;
+  }
   .right-form-hero {
     margin-top: -170px;
     position: relative;
@@ -484,12 +509,5 @@ footer {
   .navbar-toggler {
     font-size: 14px;
     padding: 3px 5px;
-  }
-
-  .navbar-brand img {
-    transform: scale(1.1);
-    padding: 5px 15px;
-    background: #fff;
-    max-width: 90px;
   }
 }

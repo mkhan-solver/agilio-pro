@@ -14,7 +14,7 @@ const Header = ({ data }: HeaderProps) => {
 
   return (<div className='headerwrapper fixed-top pt-2 pt-md-4'>
     <Container>
-      <Navbar expand="lg" className='bg-light rounded px-3' >
+      <Navbar expand="xl" className='bg-light rounded px-3' >
         <Navbar.Collapse id="navbarScroll" role="" >
           <Nav
             navbarScroll
