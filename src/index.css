@@ -24,10 +24,10 @@ button {
   font-family: 'Jost', sans-serif;
 }
 .navbar-brand img {
-  max-width: 80px;
+  max-width: 90px;
   transform: scale(1.9);
   background: #fff;
-  padding: 10px;
+  padding: 6px;
   border-radius: 5px;
   box-shadow: 0 0 1px #fff1f1;
 }
