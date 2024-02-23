@@ -72,7 +72,7 @@ const navigation = {
 };
 
 const Footer = ({ data }: FooterProps) => {
-  const { address, mainPhone, emails, description, c_frontPageServiceList, c_footerLogo, name, yextDisplayCoordinate } = data || {}
+  const { address, mainPhone, emails, description, c_frontPageServiceList, c_footerLogo, name } = data || {}
   const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
 
   return (
@@ -178,7 +178,7 @@ const Footer = ({ data }: FooterProps) => {
                 </div>
                 <div className='location_out'>
                   <iframe
-                    src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}&center=${yextDisplayCoordinate?.latitude},${yextDisplayCoordinate?.longitude}`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}`}
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
