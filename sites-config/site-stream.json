@@ -15,10 +15,12 @@
         "c_navigation.subItem.name",
         "c_navigation.subItem.slug",
         "emails",
+        "yextDisplayCoordinate",
         "address",
         "description",
         "c_frontPageServiceList.name",
-        "c_frontPageServiceList.slug"
+        "c_frontPageServiceList.slug",
+        "c_truckImage"
     ],
     "localization": {
         "locales": [

@@ -88,9 +88,7 @@ const Carousel = ({ title, photoGallery }: CarouselProps) => {
   } else if (photoGallery.length == 1) {
     photoGallery = photoGallery.concat(dummyPhotos);
   } 
-//   console.log("photo gallery array after manipulation");
-//   console.log(photoGallery);
-  const photoDivs = photoGallery.map((e) => (
+  const photoDivs = photoGallery.map((e: any) => (
     <div key={e.image.url} className="self-center hover:drop-shadow-lg sm:px-2">
       <a href={e.image.url} target="_blank" rel="noreferrer">
         <Image image={e.image} className="rounded-md" />
@@ -99,10 +97,10 @@ const Carousel = ({ title, photoGallery }: CarouselProps) => {
     </div>
   ));
 
-  const useMediaQuery = (width) => {
+  const useMediaQuery = (width: number) => {
     const [targetReached, setTargetReached] = useState(false);
   
-    const updateTarget = useCallback((e) => {
+    const updateTarget = useCallback((e: any) => {
       if (e.matches) {
         setTargetReached(true);
       } else {
@@ -113,12 +111,9 @@ const Carousel = ({ title, photoGallery }: CarouselProps) => {
     useEffect(() => {
       const media = window.matchMedia(`(max-width: ${width}px)`);
       media.addEventListener("change", updateTarget)
-  
-      // Check on mount (callback is not called until a change occurs)
       if (media.matches) {
         setTargetReached(true);
       }
-  
       return () => media.removeEventListener("change", updateTarget);
     }, []);
   
@@ -131,10 +126,9 @@ const Carousel = ({ title, photoGallery }: CarouselProps) => {
     arrows: true,
     infinite: true,
     speed: 300,
-    // slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
-    lazyLoad: true, 
+    lazyLoad: 'progressive',
     swipeToSlide: false,
     prevArrow: <PrevArrow className="" />,
     nextArrow: <NextArrow className="" />,
@@ -172,8 +166,6 @@ const Carousel = ({ title, photoGallery }: CarouselProps) => {
       }
     ],
   };
-
- 
 
   const isBreakpoint = useMediaQuery(768);
   return (

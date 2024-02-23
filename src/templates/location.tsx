@@ -2,26 +2,18 @@ import * as React from "react";
 import {
   GetHeadConfig,
   GetPath,
-  GetRedirects,
   HeadConfig,
   Template,
   TemplateConfig,
   TemplateProps,
   TemplateRenderProps,
-  TransformProps,
 } from "@yext/pages";
-import { isProduction, fetch } from "@yext/pages/util";
 import "../index.css";
 import Favicon from "../assets/images/yext-favicon.ico";
 import Content from "../components/Content";
 import Banner from "../components/Banner";
-import Carousel from "../components/Carousel";
-import Hours from "../components/Hours";
 import PageLayout from "../components/PageLayout";
 import Schema from "../components/Schema";
-import ContactSection from "../components/ContactSection";
-
-
 
 export const config: TemplateConfig = {
   stream: {
@@ -59,7 +51,6 @@ export const config: TemplateConfig = {
     ],
     localization: {
       locales: [YEXT_PUBLIC_LOCATION_LOCALE_CODE],
-      primary: false,
     },
     transform: {
       replaceOptionValuesWithDisplayNames: [
@@ -126,7 +117,7 @@ const Location: Template<TemplateRenderProps> = ({
     setFaqData(response?.response?.entities)
   }
   React.useEffect(() => {
-    getCustomerId()
+    // getCustomerId()
   }, []);
 
   const {
@@ -142,9 +133,6 @@ const Location: Template<TemplateRenderProps> = ({
       <PageLayout data={document?._site} templateData={{ __meta, document }}>
         <Banner name={name} coverPhoto={c_coverPhoto} description={c_coverPhotoDescription} />
         <Content description={description} data={document} faq={faqDataProvider} />
-        {/* {hours && <Hours title={"Hours"} hours={hours} />}
-        <Carousel title={"Gallery"} photoGallery={photoGallery}></Carousel>
-        <ContactSection address={address} phone={mainPhone} email={emails} /> */}
       </PageLayout>
     </>
   );

@@ -10,7 +10,6 @@ const HubSpotForm = () => {
                 setTimeout(async () => {
                     const localApiRequest = await fetch("/customerDetail")
                     const consumerID = await localApiRequest.json()
-                    
                     const x = form.contentWindow.document
                     const style = `<style>
                             .hs-button{

@@ -3,6 +3,8 @@ import { Container, Row, Col, Form, Button, Accordion, Carousel } from "react-bo
 import Markdown from 'markdown-to-jsx';
 import HubspotForm from "./HubSpotForm";
 
+const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
+
 export interface AboutProps {
   description?: string;
   data: any;
@@ -10,37 +12,40 @@ export interface AboutProps {
 }
 
 const Content = ({ description, data, faq }: AboutProps) => {
-  const { c_frontPageServiceList } = data
 
-  const hubSpotFormSubmit = async () => {
-    var url = `https://api.hsforms.com/submissions/v3/integration/submit/${YEXT_PUBLIC_HUBSPOT_PORTAL_ID}/${YEXT_PUBLIC_HUBSPOT_FORM_ID}`
+  const { c_frontPageServiceList,address } = data
+  const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
+  // yextDisplayCoordinate: { latitude: 32.7326674, longitude: -96.86724579999999 }
 
-    // Example request JSON:
-    var data = {
-      "submittedAt": `${Date.now()}`,
-      "fields": [
-        {
-          "objectTypeId": "0-1",
-          "name": "email",
-          "value": "example@example.com"
-        },
-        {
-          "objectTypeId": "0-1",
-          "name": "firstname",
-          "value": "Jeff"
-        }
-      ],
-    }
+  // const hubSpotFormSubmit = async () => {
+  //   var url = `https://api.hsforms.com/submissions/v3/integration/submit/${YEXT_PUBLIC_HUBSPOT_PORTAL_ID}/${YEXT_PUBLIC_HUBSPOT_FORM_ID}`
 
-    const request = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    const response = await request.json()
-    console.log(response)
+  //   // Example request JSON:
+  //   var data = {
+  //     "submittedAt": `${Date.now()}`,
+  //     "fields": [
+  //       {
+  //         "objectTypeId": "0-1",
+  //         "name": "email",
+  //         "value": "example@example.com"
+  //       },
+  //       {
+  //         "objectTypeId": "0-1",
+  //         "name": "firstname",
+  //         "value": "Jeff"
+  //       }
+  //     ],
+  //   }
 
-  }
+  //   const request = await fetch(url, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(data)
+  //   })
+  //   const response = await request.json()
+  //   console.log(response)
+
+  // }
   return (<>
     <section className='residential-section'>
       <Container>
@@ -150,28 +155,28 @@ const Content = ({ description, data, faq }: AboutProps) => {
         </Row>
       </Container>
     </section>}
-    <section className='brand-we-section'>
+    {/* <section className='brand-we-section'>
       <Container>
         <Row className='mb-4'>
           <Col>
             <h2 className='text-center heading fw-bold'>Brands We offer.</h2>
           </Col>
         </Row>
-        {/* <Row className='mb-4'>
-          <Col className='text-center'>
-            <Carousel>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-            </Carousel>
-          </Col>
-        </Row> */}
+        // <Row className='mb-4'>
+        //   <Col className='text-center'>
+        //     <Carousel>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //       <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
+        //     </Carousel>
+        //   </Col>
+        // </Row>
       </Container>
-    </section>
+    </section> */}
     <section className='get-a-quote-section'>
       <Container>
         <Row className='mb-4'>
@@ -188,7 +193,7 @@ const Content = ({ description, data, faq }: AboutProps) => {
         </Row>
       </Container>
     </section>
-    <section className='faq-section'>
+    {/* <section className='faq-section'>
       <Container>
         <Row className='mb-4'>
           <Col>
@@ -211,11 +216,21 @@ const Content = ({ description, data, faq }: AboutProps) => {
           </Col>
         </Row>
       </Container>
-    </section>
+    </section> */}
     <section className='service-area-section'>
       <Row className=''>
         <Col lg={12}>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48873.36734203019!2d-76.34154879880614!3d40.04003386764921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6248b917214b9%3A0xb46790d030dbd2d6!2sLancaster%2C%20PA%2C%20USA!5e0!3m2!1sen!2sin!4v1695631060701!5m2!1sen!2sin" width="100%" height="300" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe
+            width="100%"
+            height="300"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}&center=${data?.yextDisplayCoordinate?.latitude},${data?.yextDisplayCoordinate?.longitude}`}
+            // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.245476116575!2d-96.86982072447456!3d32.73267188625113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9a6807f181cb%3A0x8a6f85d5b6b96059!2s2816%20Emmett%20St%2C%20Dallas%2C%20TX%2075211%2C%20USA!5e0!3m2!1sen!2sin!4v1708667796735!5m2!1sen!2sin"
+            >
+          </iframe>
         </Col>
       </Row>
     </section>
