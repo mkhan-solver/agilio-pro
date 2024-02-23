@@ -44,7 +44,7 @@ const InnerPageLayout = ({ data }: InnerPageLayoutProps) => {
             <Container>
                 <Row gap={3} className="flex-column-reverse flex-lg-row">
                     <Col lg={7}>
-                        {/* <Carousel photoGallery={data.photoGallery} /> */}
+                        <Carousel photoGallery={data.photoGallery} />
                         <div>
                             <Markdown>{data?.bodyV2?.markdown}</Markdown>
                         </div>
