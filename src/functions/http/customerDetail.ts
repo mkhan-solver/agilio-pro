@@ -9,7 +9,7 @@ export default async function customerDetail(
   
   const userDetailRequest = await fetch(`https://api.yextapis.com/v2/accounts?api_key=${api_key}&v=20231128&name=${site?.businessName}`)
   const { response } = await userDetailRequest.json()
-  const { accountId } = response?.accounts[0]
+  const { accountId } = response?.accounts[0] || {}
 
   if (queryParams.type === 'faq') {
     const requestFaq = await fetch(`https://api.yextapis.com/v2/accounts/${accountId}/entities?api_key=${api_key}&v=20231019&entityTypes=faq&convertRichTextToHTML=true`)
