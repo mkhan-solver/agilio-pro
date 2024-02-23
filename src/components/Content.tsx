@@ -12,7 +12,7 @@ export interface AboutProps {
 const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
 
 const Content = ({ description, data, faq }: AboutProps) => {
-  const { c_frontPageServiceList } = data
+  const { c_frontPageServiceList,address } = data
   const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
 
   const hubSpotFormSubmit = async () => {
