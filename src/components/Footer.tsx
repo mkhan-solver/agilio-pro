@@ -18,6 +18,7 @@ export interface FooterProps {
 
 const currentTime = new Date();
 const year = currentTime.getFullYear();
+const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
 
 const navigation = {
   company: [
