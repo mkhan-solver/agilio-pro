@@ -438,7 +438,7 @@ footer {
 .navbar-nav .dropdown-item {
   padding: 8px 15px;
   border-radius: 5px;
-  color: #fff;
+  color: #000;
 }
 .navbar-nav .dropdown-item:hover {
   background: #294db6;
