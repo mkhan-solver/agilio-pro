@@ -9,10 +9,10 @@ export interface InnerPageLayoutProps {
     data: any;
 }
 
-const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
+// const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
+const apiKey = 'AIzaSyANR1FGyPAwq23wsi5G2YN0Ro_mF79HrOc'
 
 const InnerPageLayout = ({ data }: InnerPageLayoutProps) => {
-    console.log('InnerPageLayout', data)
     const dynamicAddress = `${data?._site?.address?.line1}, ${data?._site?.address?.city}, ${data?._site?.address?.region}, ${data?._site?.address?.postalCode}`
     if (data?.c_blogList) {
         return (<section className='our-service-section'>

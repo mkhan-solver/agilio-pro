@@ -9,7 +9,8 @@ export interface AboutProps {
   faq: any;
 }
 
-const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
+// const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
+const apiKey = 'AIzaSyANR1FGyPAwq23wsi5G2YN0Ro_mF79HrOc'
 
 const Content = ({ description, data, faq }: AboutProps) => {
   const { c_frontPageServiceList,address } = data
