@@ -141,7 +141,7 @@ const Content = ({ description, data, faq }: AboutProps) => {
                     <img alt='Logo' src={serviceList?.photoGallery?.[0]?.image.url || `/src/assets/images/Heating-Repair-Replacement.jpg`} className='w-100 img-fluid card-image'></img>
                   </div>
                   <div className='content-card text-center p-4 pb-5'>
-                    <img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img>
+{/*                     <img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img> */}
                     <h5 className='my-3'>{serviceList?.name}</h5>
                     <p>{serviceList.description}</p>
                     <a href={`/${serviceList?.slug}`} className='link_bold fw-bold'>VIEW SERVICE »</a>
