@@ -6,8 +6,8 @@
         "pattern": "assets/**/*"
       },
       {
-        "root": "dist",
-        "pattern": "*"
+        "root": "dist/public_assets",
+        "pattern": "**/*"
       }
     ],
     "features": "sites-config/features.json",
@@ -21,7 +21,7 @@
           },
           {
             "root": "dist",
-            "pattern": "assets/{server,static,renderer,render}/**/*{.js,.css}"
+            "pattern": "assets/{server,static,renderer,render,client}/**/*{.js,.css}"
           }
         ],
         "event": "ON_PAGE_GENERATE",
@@ -34,7 +34,7 @@
         "apiPath": "faq",
         "sourceFiles": [
           {
-            "root": "dist\\functions\\faq-00574",
+            "root": "dist/functions/faq-00574",
             "pattern": "*{.js,.ts}"
           }
         ]
@@ -46,7 +46,7 @@
         "apiPath": "customerDetail",
         "sourceFiles": [
           {
-            "root": "dist\\functions\\customerDetail-00585",
+            "root": "dist/functions/customerDetail-00585",
             "pattern": "*{.js,.ts}"
           }
         ]
