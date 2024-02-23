@@ -23,14 +23,14 @@ export const config: TemplateConfig = {
       "datePosted",
       "photoGallery",
       "bodyV2",
-      "description",
-      "c_truckImage"
+      "description"
     ],
     filter: {
       entityTypes: ["ce_services"],
     },
     localization: {
       locales: ["en"],
+      primary: false,
     },
   },
 };

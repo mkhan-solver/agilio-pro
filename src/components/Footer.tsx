@@ -18,7 +18,6 @@ export interface FooterProps {
 
 const currentTime = new Date();
 const year = currentTime.getFullYear();
-const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
 
 const navigation = {
   company: [
@@ -73,7 +72,7 @@ const navigation = {
 
 const Footer = ({ data }: FooterProps) => {
   const { address, mainPhone, emails, description, c_frontPageServiceList, c_footerLogo, name } = data || {}
-  const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
+
   return (
     <>
       <footer>
@@ -176,16 +175,7 @@ const Footer = ({ data }: FooterProps) => {
                   <h3>Our Location</h3>
                 </div>
                 <div className='location_out'>
-                  <iframe
-                    src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}&center=${data?.yextDisplayCoordinate?.latitude},${data?.yextDisplayCoordinate?.longitude}`}
-                    width="100%"
-                    height="300"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  >
-                    </iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48873.36734203019!2d-76.34154879880614!3d40.04003386764921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6248b917214b9%3A0xb46790d030dbd2d6!2sLancaster%2C%20PA%2C%20USA!5e0!3m2!1sen!2sin!4v1695631060701!5m2!1sen!2sin" width="100%" height="300" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
               </div>
             </Col>

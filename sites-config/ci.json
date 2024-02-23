@@ -6,8 +6,8 @@
         "pattern": "assets/**/*"
       },
       {
-        "root": "dist/public_assets",
-        "pattern": "**/*"
+        "root": "dist",
+        "pattern": "*"
       }
     ],
     "features": "sites-config/features.json",
@@ -21,7 +21,7 @@
           },
           {
             "root": "dist",
-            "pattern": "assets/{server,static,renderer,render,client}/**/*{.js,.css}"
+            "pattern": "assets/{server,static,renderer,render}/**/*{.js,.css}"
           }
         ],
         "event": "ON_PAGE_GENERATE",

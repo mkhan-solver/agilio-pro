@@ -36,6 +36,7 @@ export const config: TemplateConfig = {
         },
         localization: {
             locales: ["en"],
+            primary: false,
         },
     },
 };
@@ -65,11 +66,13 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 
 const Pages = ({ __meta, document }: TemplateRenderProps) => {
     const { name, photoGallery,slug } = document;
+
     return (
         <>
             <PageLayout data={document?._site} templateData={{ __meta, document }}>
                 {slug !== 'blog' && <InnerPagesBanner name={name} photoGallery={photoGallery} description={document?.description} />}
                 <InnerPageLayout data={document} />
+
             </PageLayout>
         </>
     );

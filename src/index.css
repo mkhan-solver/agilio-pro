@@ -438,7 +438,7 @@ footer {
 .navbar-nav .dropdown-item {
   padding: 8px 15px;
   border-radius: 5px;
-  color: #000;
+  color: #fff;
 }
 .navbar-nav .dropdown-item:hover {
   background: #294db6;
@@ -484,7 +484,7 @@ footer {
 @media (max-width: 1199px) {
   .navbar-brand img {
     transform: scale(1.1);
-    padding: 6px;
+    padding: 5px 15px;
     background: #fff;
     max-width: 90px;
   }

@@ -31,6 +31,7 @@ export const config: TemplateConfig = {
     },
     localization: {
       locales: ["en"],
+      primary: false,
     },
   },
 };
@@ -66,21 +67,18 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 
 const Blog = ({__meta, document }: TemplateRenderProps) => {
   const { name, datePosted, bodyV2, c_coverPhoto } = document;
-  // console.log('c_coverPhoto', document)
-  return (
-    <PageLayout data={document?._site} templateData={{__meta, document}}>
-      <div className="mb-5 blog_image_service">
+  return (<PageLayout data={document?._site} templateData={{__meta, document}}>
+    <div className="mb-5 blog_image_service">
         <Container>
-          <Row>
-            <Col lg={12}>
-              <img alt='Logo' src={c_coverPhoto?.image?.url} className='w-100 img-fluid blog_image_set'></img>
-              <Markdown>{bodyV2?.markdown}</Markdown>
-            </Col>
-          </Row>
+            <Row>
+                <Col lg={12}>
+                    <img alt='Logo' src={c_coverPhoto?.image?.url} className='w-100 img-fluid blog_image_set'></img>
+                    <Markdown>{bodyV2?.markdown}</Markdown>
+                </Col>
+            </Row>
         </Container>
-      </div>
-    </PageLayout>
-  );
+    </div>
+  </PageLayout>);
 };
 
 export default Blog;
