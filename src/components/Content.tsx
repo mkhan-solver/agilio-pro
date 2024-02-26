@@ -185,8 +185,8 @@ const Content = ({ description, data, faq }: AboutProps) => {
         </Row>
         <Row>
           <Col className='text-center'>
-            <a href="/contact-us">
-              <Button className="rounded btn-lg fw-bold" variant="dark">GET A QUOTE</Button>
+            <a href="/contact-us" className="rounded btn-lg fw-bold">
+              <Button variant="dark">GET A QUOTE</Button>
             </a>
             <div className='truck_image-wrap' data-aos="slide-left" data-aos-duration="4000">
               <img alt='truck' src={data?.c_truckImage?.url} className='image_truck img-fluid'></img></div>
