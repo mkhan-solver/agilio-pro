@@ -9,9 +9,6 @@ export interface InnerPageLayoutProps {
     data: any;
 }
 
-// const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
-const apiKey = 'AIzaSyANR1FGyPAwq23wsi5G2YN0Ro_mF79HrOc'
-
 const InnerPageLayout = ({ data }: InnerPageLayoutProps) => {
     const dynamicAddress = `${data?._site?.address?.line1}, ${data?._site?.address?.city}, ${data?._site?.address?.region}, ${data?._site?.address?.postalCode}`
     if (data?.c_blogList) {
@@ -127,7 +124,7 @@ const InnerPageLayout = ({ data }: InnerPageLayoutProps) => {
             <Row className=''>
                 <Col lg={12}>
                 <iframe
-                    src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${YEXT_PUBLIC_GOOGLE_MAP_API_KEY}&q==${encodeURIComponent(dynamicAddress)}`}
                     width="100%"
                     height="300"
                     style={{ border: 0 }}

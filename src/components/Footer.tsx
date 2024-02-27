@@ -18,8 +18,6 @@ export interface FooterProps {
 
 const currentTime = new Date();
 const year = currentTime.getFullYear();
-// const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
-const apiKey = 'AIzaSyANR1FGyPAwq23wsi5G2YN0Ro_mF79HrOc'
 
 const navigation = {
   company: [
@@ -179,7 +177,7 @@ const Footer = ({ data }: FooterProps) => {
                 </div>
                 <div className='location_out'>
                   <iframe
-                    src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}`}
+                    src={`https://www.google.com/maps/embed/v1/place?key=${YEXT_PUBLIC_GOOGLE_MAP_API_KEY}&q==${encodeURIComponent(dynamicAddress)}`}
                     width="100%"
                     height="300"
                     style={{ border: 0 }}

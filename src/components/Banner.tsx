@@ -20,7 +20,11 @@ const Banner = ({ name, description, coverPhoto }: BannerProps) => {
                   <div>
                       <h1 className='hero-heading'>{name || 'Arctic Air'}</h1>
                       <p className='hero-description'>{description}</p>
-                      <Link href="/contact-us"><Button className="rounded btn-lg fw-bold" variant="primary">CONTACT US</Button></Link>
+                      <Link href="/contact-us">
+                        <Button className="rounded btn-lg fw-bold" variant="primary">
+                          CONTACT US
+                        </Button>
+                      </Link>
                   </div>
               </Col>
           </Row>

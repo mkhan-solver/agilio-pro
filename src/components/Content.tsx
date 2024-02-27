@@ -2,15 +2,13 @@ import * as React from "react";
 import { Container, Row, Col, Form, Button, Accordion, Carousel } from "react-bootstrap";
 import Markdown from 'markdown-to-jsx';
 import HubspotForm from "./HubSpotForm";
+import { Link } from "@yext/sites-components";
 
 export interface AboutProps {
   description?: string;
   data: any;
   faq: any;
 }
-
-// const apiKey = 'AIzaSyBLPQnC-DUKcZsfOSaZzoCFH8IhCFrNMBw'
-const apiKey = 'AIzaSyANR1FGyPAwq23wsi5G2YN0Ro_mF79HrOc'
 
 const Content = ({ description, data, faq }: AboutProps) => {
   const { c_frontPageServiceList,address } = data
@@ -185,9 +183,9 @@ const Content = ({ description, data, faq }: AboutProps) => {
         </Row>
         <Row>
           <Col className='text-center'>
-            <a href="/contact-us" className="rounded btn-lg fw-bold">
+            <Link href="/contact-us" className="rounded btn-lg fw-bold">
               <Button variant="dark">GET A QUOTE</Button>
-            </a>
+            </Link>
             <div className='truck_image-wrap' data-aos="slide-left" data-aos-duration="4000">
               <img alt='truck' src={data?.c_truckImage?.url} className='image_truck img-fluid'></img></div>
           </Col>
@@ -228,7 +226,7 @@ const Content = ({ description, data, faq }: AboutProps) => {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q==${encodeURIComponent(dynamicAddress)}&center=${data?.yextDisplayCoordinate?.latitude},${data?.yextDisplayCoordinate?.longitude}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${YEXT_PUBLIC_GOOGLE_MAP_API_KEY}&q==${encodeURIComponent(dynamicAddress)}&center=${data?.yextDisplayCoordinate?.latitude},${data?.yextDisplayCoordinate?.longitude}`}
             // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48873.36734203019!2d-76.34154879880614!3d40.04003386764921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6248b917214b9%3A0xb46790d030dbd2d6!2sLancaster%2C%20PA%2C%20USA!5e0!3m2!1sen!2sin!4v1695631060701!5m2!1sen!2sin"
             >
           </iframe>
