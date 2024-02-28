@@ -52,7 +52,6 @@ export const config: TemplateConfig = {
     ],
     localization: {
       locales: [YEXT_PUBLIC_LOCATION_LOCALE_CODE],
-      primary: false,
     },
     transform: {
       replaceOptionValuesWithDisplayNames: [

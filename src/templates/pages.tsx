@@ -71,7 +71,6 @@ const Pages = ({ __meta, document }: TemplateRenderProps) => {
             <PageLayout data={document?._site} templateData={{ __meta, document }}>
                 {slug !== 'blog' && <InnerPagesBanner name={name} photoGallery={photoGallery} description={document?.description} />}
                 <InnerPageLayout data={document} />
-
             </PageLayout>
         </>
     );
