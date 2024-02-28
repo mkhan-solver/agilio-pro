@@ -62,11 +62,9 @@ export const config: TemplateConfig = {
   },
 };
 
-
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return document.slug;
 };
-
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
@@ -102,8 +100,6 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
     ],
   };
 };
-
-
 
 const Location: Template<TemplateRenderProps> = ({
   __meta,
