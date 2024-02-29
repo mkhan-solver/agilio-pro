@@ -19,13 +19,15 @@ const Header = ({ data }: HeaderProps) => {
               <Nav navbarScroll >
                 {data?.c_navigation?.map((navigationItem: any, index: number) => {
                   if (navigationItem?.subItem?.length > 0) {
-                    return (<NavDropdown key={index} title={navigationItem.label} id="navbarScrollingDropdown">
-                      {
-                        navigationItem.subItem.map((child: any) => (<NavDropdown.Item key={child.slug} href={`/${child.slug}`}>{child.name}</NavDropdown.Item>))
-                      }
-                    </NavDropdown>)
+                    return (
+                      <NavDropdown key={index} title={navigationItem.label} id="navbarScrollingDropdown">
+                        {
+                          navigationItem.subItem.map((child: any) => (<NavDropdown.Item key={child.slug} href={`/${child.slug}`}>{child.name}</NavDropdown.Item>))
+                        }
+                      </NavDropdown>
+                    )
                   }
-                  if(navigationItem?.label != 'Blog'){
+                  if (navigationItem?.label != 'Blog') {
                     return (<Nav.Link key={index} href={`${navigationItem.uRL}`}>{navigationItem.label}</Nav.Link>)
                   }
                 })}
@@ -40,7 +42,10 @@ const Header = ({ data }: HeaderProps) => {
           <div className="col-6 col-xl-5 justify-content-end d-flex">
             <div className='d-md-flex d-none gap-3 me-3'>
               {/* <a>
-                <Button className="rounded btn-lg fw-bold" variant="outline-dark"><BiCalendar style={{ marginRight: '3px' }} size="25px" />Schedule Now</Button>
+                <Button className="rounded btn-lg fw-bold" variant="outline-dark">
+                  <BiCalendar style={{ marginRight: '3px' }} size="25px" />
+                  Schedule Now
+                </Button>
               </a> */}
               {/* <a href='#'>
                 <img alt='Logo' src={data?.c_googleReview ? data?.c_googleReview.image.url: `/src/assets/images/5Stars.webp`} width={100}></img>

@@ -50,10 +50,6 @@ const Content = ({ description, data, faq }: AboutProps) => {
           <Col lg={7}>
             <div>
               <Markdown>{data?.c_heroSection?.markdown}</Markdown>
-              {/* <h2 className='heading'>Residential & Commercial HVAC Services</h2>
-              <p className='graph-head'>Welcome to Arctic Air, where we are committed to providing our customers with high-quality heating and air conditioning services. We pride ourselves on our commitment to exceptional customer service, expert knowledge, and cutting-edge technology. Our team of skilled professionals ensures that your home or business stays comfortable and relaxed all year round.</p>
-              <p className='graph-head'>We believe that our success is built on the trust and satisfaction of our customers. That’s why we are committed to providing reliable, affordable, and timely service whenever you call us. Thank you for choosing Arctic Air av for all your HVAC needs.</p>
-              <a href='#' className='link_bold fw-bold'>MORE ABOUT US</a> */}
             </div>
           </Col>
           <Col lg={5} className='mb-lg-0 mb-4'>
@@ -64,26 +60,6 @@ const Content = ({ description, data, faq }: AboutProps) => {
               <div className='bg-white p-4 p-md-5 rounded shadow'>
                 <h2 className='mb-4'>Request a Free Quote</h2>
                 <HubspotForm />
-                {/* <Row className='mt-3'>
-                  <Col className='contact_wrap-form d-flex gap-3 col align-items-center'>
-                    <div>
-                      <i className="fa-solid fa-phone-volume"></i>
-                    </div>
-                    <div className='contact_wrap'>
-                      <p className='mb-0'>Hotline</p>
-                      <a className='fw-bold underline-0' href='tel:1-661-550-1364'>1-661-550-1364</a>
-                    </div>
-                  </Col>
-                  <Col className='contact_wrap-form d-flex gap-3 col align-items-center'>
-                    <div>
-                      <i className="fa-solid fa-envelope"></i>
-                    </div>
-                    <div className='contact_wrap'>
-                      <p className='mb-0'>Email</p>
-                      <a className='fw-bold underline-0' href='mailto:office@arcticairav.com'>office@arcticairav.com</a>
-                    </div>
-                  </Col>
-                </Row> */}
               </div>
             </div>
           </Col>
@@ -96,13 +72,17 @@ const Content = ({ description, data, faq }: AboutProps) => {
           <Col lg={6}>
             <div>
               <h2 className='sub-heading' data-aos="fade-left">Why Choose Us?</h2>
-              <p><Markdown>{data?.c_whyChooseUs?.markdown}</Markdown></p>
+              <p>
+                <Markdown>{data?.c_whyChooseUs?.markdown}</Markdown>
+              </p>
             </div>
           </Col>
           <Col lg={6}>
             <div>
               <h2 className='sub-heading'>Our Mission</h2>
-              <p><Markdown>{data?.c_ourMission?.markdown}</Markdown></p>
+              <p>
+                <Markdown>{data?.c_ourMission?.markdown}</Markdown>
+              </p>
             </div>
           </Col>
         </Row>
@@ -110,49 +90,51 @@ const Content = ({ description, data, faq }: AboutProps) => {
           <Col lg={6}>
             <div>
               <h2 className='sub-heading'>What to Expect?</h2>
-              <p><Markdown>{data?.c_whatToExpect?.markdown}</Markdown></p>
+              <p>
+                <Markdown>{data?.c_whatToExpect?.markdown}</Markdown>
+              </p>
             </div>
           </Col>
           <Col lg={6}>
             <div className='img-why-section'>
-              <img alt='Logo' src={data?.c_whySectionImage?.url} className='w-100 img-fluid'></img>
+              <img alt='Logo' src={data?.c_whySectionImage?.url} className='w-100 img-fluid'/>
             </div>
           </Col>
         </Row>
       </Container>
     </section>
-    {c_frontPageServiceList && <section className='our-service-section'>
-      <Container>
-        <Row className='mb-4'>
-          <Col>
-            <h2 className='heading fw-bold'>Our Services</h2>
-          </Col>
-          <Col className='text-end'>
-            <Button className="rounded btn-lg fw-bold" variant="primary">MORE ABOUT US</Button>
-          </Col>
-        </Row>
-        <Row gap={4} className="flex-column-reverse flex-lg-row">
-          {
-            c_frontPageServiceList?.map((serviceList: any) => (
-              <Col lg={3} key={serviceList?.name} className='mb-3'>
-                <div className='card-wrap bg-white rounded overflow-hidden shadow h-100'>
-                  <div className='card-image-wrap'>
-                    <img alt='Logo' src={serviceList?.photoGallery?.[0]?.image.url || `/src/assets/images/Heating-Repair-Replacement.jpg`} className='w-100 img-fluid card-image'></img>
+    {c_frontPageServiceList && 
+      <section className='our-service-section'>
+        <Container>
+          <Row className='mb-4'>
+            <Col>
+              <h2 className='heading fw-bold'>Our Services</h2>
+            </Col>
+            <Col className='text-end'>
+              <Button className="rounded btn-lg fw-bold" variant="primary">MORE ABOUT US</Button>
+            </Col>
+          </Row>
+          <Row gap={4} className="flex-column-reverse flex-lg-row">
+            {c_frontPageServiceList?.map((serviceList: any) => (
+                <Col lg={3} key={serviceList?.name} className='mb-3'>
+                  <div className='card-wrap bg-white rounded overflow-hidden shadow h-100'>
+                    <div className='card-image-wrap'>
+                      <img alt='Logo' src={serviceList?.photoGallery?.[0]?.image.url || `/src/assets/images/Heating-Repair-Replacement.jpg`} className='w-100 img-fluid card-image'/>
+                    </div>
+                    <div className='content-card text-center p-4 pb-5'>
+                      {/* <img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img> */}
+                      <h5 className='my-3'>{serviceList?.name}</h5>
+                      <p>{serviceList.description}</p>
+                      <a href={`/${serviceList?.slug}`} className='link_bold fw-bold'>VIEW SERVICE »</a>
+                    </div>
                   </div>
-                  <div className='content-card text-center p-4 pb-5'>
-{/*                     <img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img> */}
-                    <h5 className='my-3'>{serviceList?.name}</h5>
-                    <p>{serviceList.description}</p>
-                    <a href={`/${serviceList?.slug}`} className='link_bold fw-bold'>VIEW SERVICE »</a>
-                  </div>
-                </div>
-              </Col>
-            ))
-          }
-        </Row>
-      </Container>
-    </section>}
-{/*     <section className='brand-we-section'>
+                </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+    }
+    {/* <section className='brand-we-section'>
       <Container>
         <Row className='mb-4'>
           <Col>
@@ -192,7 +174,7 @@ const Content = ({ description, data, faq }: AboutProps) => {
         </Row>
       </Container>
     </section>
-{/*     <section className='faq-section'>
+    {/* <section className='faq-section'>
       <Container>
         <Row className='mb-4'>
           <Col>
@@ -202,15 +184,14 @@ const Content = ({ description, data, faq }: AboutProps) => {
         <Row className='mb-4'>
           <Col>
             <Accordion defaultActiveKey="0">
-              {
-                faq?.map((value: any, index: number) => {
-                  return (<Accordion.Item key={value.question} eventKey={`${index}`}>
-                    <Accordion.Header>{value.question}</Accordion.Header>
-                    <Accordion.Body dangerouslySetInnerHTML={{ __html: value?.answerV2?.html }}></Accordion.Body>
-                  </Accordion.Item>)
-                })
-              }
-
+              {faq?.map((value: any, index: number) => {
+                  return (
+                    <Accordion.Item key={value.question} eventKey={`${index}`}>
+                      <Accordion.Header>{value.question}</Accordion.Header>
+                      <Accordion.Body dangerouslySetInnerHTML={{ __html: value?.answerV2?.html }}></Accordion.Body>
+                    </Accordion.Item>
+                  )
+              })}
             </Accordion>
           </Col>
         </Row>
