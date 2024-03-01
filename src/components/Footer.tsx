@@ -156,7 +156,7 @@ const Footer = ({ data, templateData }: FooterProps) => {
               </div>
               <div className='content_info'>
                 <ul>
-                  {formatOpeningHours(templateData.hours).map(item => (
+                  {formatOpeningHours(templateData?.hours).map(item => (
                     <li>
                       <p>{item.day} : {item.openIntervals === 'Closed'? item.openIntervals: `${item.openIntervals[0].start} - ${item.openIntervals[0].end}`}</p>
                     </li>
