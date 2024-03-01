@@ -48,7 +48,9 @@ export const config: TemplateConfig = {
       "c_coverPhotoHeading",
       "c_coverPhotoDescription",
       "c_whySectionImage",
-      "c_truckImage"
+      "c_truckImage",
+      "instagramHandle",
+      "twitterHandle",
     ],
     localization: {
       locales: [YEXT_PUBLIC_LOCATION_LOCALE_CODE],

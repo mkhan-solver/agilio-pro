@@ -1,10 +1,7 @@
 import * as React from "react";
 import {
-  Facebook,
-  GitHub,
   Instagram,
   Twitter,
-  YouTube,
 } from "../assets/svgs/SocialIcons";
 import { Col, Container, Row } from "react-bootstrap";
 import { formatPhoneNumberIntl } from "react-phone-number-input";
@@ -14,65 +11,54 @@ export interface FooterProps {
   logo?: string;
   paragraph?: string;
   data: any;
+  templateData: any;
 }
 
 const currentTime = new Date();
 const year = currentTime.getFullYear();
 
-const navigation = {
-  company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-  ],
-  legal: [
-    { name: "Claim", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-  ],
-  social: [
-    {
-      name: "Facebook",
-      href: "#",
-      icon: (
-        props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-      ) => <Facebook {...props} />,
-    },
-    {
-      name: "Instagram",
-      href: "#",
-      icon: (
-        props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-      ) => <Instagram {...props} />,
-    },
-    {
-      name: "Twitter",
-      href: "#",
-      icon: (
-        props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-      ) => <Twitter {...props} />,
-    },
-    {
-      name: "GitHub",
-      href: "#",
-      icon: (
-        props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-      ) => <GitHub {...props} />,
-    },
-    {
-      name: "YouTube",
-      href: "#",
-      icon: (
-        props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-      ) => <YouTube {...props} />,
-    },
-  ],
-};
-
-const Footer = ({ data }: FooterProps) => {
+const Footer = ({ data, templateData }: FooterProps) => {
   const { address, mainPhone, emails, description, c_frontPageServiceList, c_footerLogo, name } = data || {}
   const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
+  // console.log('template data', templateData)
+  function formatOpeningHours(hours: any) {
+    const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+  
+    const convertTo3LetterDay = (day: string) => {
+      return day.charAt(0).toUpperCase() + day.slice(1, 3).toLowerCase();
+    };
+
+    const convertTo12HourFormat = (time: any) => {
+      const [hours, minutes] = time.split(":");
+      const parsedHours = parseInt(hours, 10);
+      const period = parsedHours >= 12 ? "PM" : "AM";
+      const formattedHours = parsedHours % 12 || 12;
+      return `${formattedHours}:${minutes} ${period}`;
+    };
+  
+    const formattedHours = daysOfWeek.map((day) => {
+      const dayInfo = hours[day];
+      
+      if (!dayInfo) {
+        return { day: convertTo3LetterDay(day), openIntervals: "Closed" };
+      }
+  
+      if (dayInfo.isClosed) {
+        return { day: convertTo3LetterDay(day), openIntervals: "Closed" };
+      }
+  
+      const openIntervals = dayInfo.openIntervals.map((interval:any) => {
+        return {
+          start: convertTo12HourFormat(interval.start),
+          end: convertTo12HourFormat(interval.end),
+        };
+      });
+  
+      return { day: convertTo3LetterDay(day), openIntervals };
+    });
+  
+    return formattedHours;
+  }
 
   return (
     <>
@@ -81,13 +67,43 @@ const Footer = ({ data }: FooterProps) => {
           <Row>
             <Col lg={3}>
               <div className='logo-wrap'>
-                {c_footerLogo && <a href='#' className='d-block mb-3'>
-                  <img alt='Logo' src={c_footerLogo?.image?.url} className='footer_logo'></img>
-                </a>}
+                {c_footerLogo &&
+                  <a href='#' className='d-block mb-3'>
+                    <img alt='Logo' src={c_footerLogo?.image?.url} className='footer_logo'></img>
+                  </a>
+                }
                 <p>{description}</p>
               </div>
+              <div className='content_info'>
+                <ul>
+                  <li>
+                    <a href={`tel:${mainPhone}`}>
+                      {formatPhoneNumberIntl(mainPhone)}
+                    </a>
+                  </li>
+                  <li>
+                    <a href='mailto:office@arcticairav.com'>
+                      {emails?.[0] || '-'}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className='footer-social-icons'>
+                <ul>
+                  <li>
+                    <a href='#'>
+                      <Twitter width={'20px'} height={'20px'}/>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#'>
+                      <Instagram width={'20px'} height={'20px'} />
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </Col>
-            <Col lg={3}>
+            {/* <Col lg={2}>
               <div className='logo-wrap'>
                 <div className='footer-wrap-col'>
                   <h3>Contact Info</h3>
@@ -118,40 +134,34 @@ const Footer = ({ data }: FooterProps) => {
                     </li>
                   </ul>
                 </div>
-                <div className='footer-wrap-col'>
-                  <h3>Open Hours:</h3>
-                </div>
-                <div className='content_info'>
-                  <ul>
-                    <li>
-                      <i className="fa-regular fa-clock"></i>
-                      <p>Mon – Fri: 7am - 4pm</p>
-                    </li>
-                    <li>
-                      <i className="fa-regular fa-clock"></i>
-                      <p>Sat - Sun: Closed</p>
-                    </li>
-                  </ul>
-                </div>
                 <div className='footer-social-icons'>
                   <ul>
                     <li>
                       <a href='#'>
-                        <i className="fa-brands fa-facebook"></i>
+                        <Twitter width={'20px'} height={'20px'}/>
                       </a>
                     </li>
                     <li>
                       <a href='#'>
-                        <i className="fa-brands fa-google"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#'>
-                        <i className="fa-brands fa-yelp"></i>
+                        <Instagram width={'20px'} height={'20px'} />
                       </a>
                     </li>
                   </ul>
                 </div>
+              </div>
+            </Col> */}
+            <Col lg={3}>
+              <div className='footer-wrap-col'>
+                <h3>Open Hours</h3>
+              </div>
+              <div className='content_info'>
+                <ul>
+                  {formatOpeningHours(templateData.hours).map(item => (
+                    <li>
+                      <p>{item.day} : {item.openIntervals === 'Closed'? item.openIntervals: `${item.openIntervals[0].start} - ${item.openIntervals[0].end}`}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Col>
             <Col lg={3}>

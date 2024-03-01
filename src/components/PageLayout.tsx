@@ -12,7 +12,6 @@ export interface PageLayoutProps {
 }
 
 const PageLayout = ({ children, data, templateData }: PageLayoutProps) => {
-
   let backgroundColor;
 
   if (data?.c_backgroundColor) {
@@ -33,7 +32,7 @@ const PageLayout = ({ children, data, templateData }: PageLayoutProps) => {
           </AnalyticsScopeProvider>
           {children}
           <AnalyticsScopeProvider name="footer">
-            <Footer data={data} />
+            <Footer data={data} templateData={templateData.document} />
           </AnalyticsScopeProvider>
         </div>
       </AnalyticsProvider>
