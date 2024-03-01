@@ -72,33 +72,16 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
   relativePrefixToRoot
 }): HeadConfig => {
+  const ogImage = document.photoGallery?.[0]?.image?.url ?? null;
+
   return {
     title: document.name,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
-      {
-        type: "meta",
-        attributes: {
-          name: "description",
-          content: document.description,
-        },
-      },
-      {
-        type: "meta", // Meta Tag (og:image)
-        attributes: {
-          property: "og:image",
-          content: (document.photoGallery ? document.photoGallery[0].image.url : null),
-        },
-      },
-      {
-        type: "link",
-        attributes: {
-          rel: "icon",
-          type: "image/x-icon",
-          href: relativePrefixToRoot + Favicon,
-        },
-      },
+      { type: "meta", attributes: { name: "description", content: document.description } },
+      { type: "meta", attributes: { property: "og:image", content: ogImage } },
+      { type: "link", attributes: { rel: "icon", type: "image/x-icon", href: `${relativePrefixToRoot}${Favicon}` } },
     ],
   };
 };

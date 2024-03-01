@@ -1,27 +1,23 @@
 import * as React from "react";
-import {
-  Instagram,
-  Twitter,
-} from "../assets/svgs/SocialIcons";
 import { Col, Container, Row } from "react-bootstrap";
 import { formatPhoneNumberIntl } from "react-phone-number-input";
+import { Instagram, Twitter } from "../assets/svgs/SocialIcons";
 
-export interface FooterProps {
-  _site?: any;
-  logo?: string;
-  paragraph?: string;
+interface FooterProps {
   data: any;
   templateData: any;
 }
 
-const currentTime = new Date();
-const year = currentTime.getFullYear();
+const year = new Date().getFullYear();
 
 const Footer = ({ data, templateData }: FooterProps) => {
-  const { address, mainPhone, emails, description, c_frontPageServiceList, c_footerLogo, name } = data || {}
-  const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
-  // console.log('template data', templateData)
+  const { address, mainPhone, emails, description, c_frontPageServiceList, c_footerLogo, name } = data || {};
+  const dynamicAddress = `${address?.line1}, ${address?.city}, ${address?.region}, ${address?.postalCode}`;
+
   function formatOpeningHours(hours: any) {
+    if (!hours || Object.keys(hours).length === 0) {
+      return [];
+    }
     const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
   
     const convertTo3LetterDay = (day: string) => {
@@ -56,12 +52,11 @@ const Footer = ({ data, templateData }: FooterProps) => {
   
       return { day: convertTo3LetterDay(day), openIntervals };
     });
-  
     return formattedHours;
   }
 
   return (
-    <>
+    <React.Fragment>
       <footer>
         <Container>
           <Row>
@@ -171,8 +166,8 @@ const Footer = ({ data, templateData }: FooterProps) => {
                 </div>
                 <div className='content_info'>
                   <ul>
-                    {
-                      c_frontPageServiceList?.map((serviceListArr: any) => (<li key={serviceListArr.slug}>
+                    {c_frontPageServiceList?.map((serviceListArr: any) => (
+                      <li key={serviceListArr.slug}>
                         <a href={`/${serviceListArr.slug}`}>{serviceListArr.name}</a>
                       </li>))
                     }
@@ -200,17 +195,18 @@ const Footer = ({ data, templateData }: FooterProps) => {
               </div>
             </Col>
           </Row>
-
         </Container>
       </footer>
       <Row className='text-center copyright'>
         <Col>
           <Container>
-            <p><i aria-hidden="true" className="far fa-copyright"></i> {year}. All rights reserved by <a href='/' style={{ textTransform: 'uppercase' }}>{name}</a>.</p>
+            <p>
+              {year}. All rights reserved by <a href='/' style={{ textTransform: 'uppercase' }}>{name}</a>.
+            </p>
           </Container>
         </Col>
       </Row>
-    </>
+    </React.Fragment>
   );
 };
 

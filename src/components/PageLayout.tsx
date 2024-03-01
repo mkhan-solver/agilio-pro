@@ -11,28 +11,24 @@ export interface PageLayoutProps {
   templateData: TemplateProps;
 }
 
+const transformColor = (color: string | undefined): string => {
+  return color ? color.replace(/\s+/g, '').toLowerCase() : 'white';
+};
+
 const PageLayout = ({ children, data, templateData }: PageLayoutProps) => {
-  let backgroundColor;
-
-  if (data?.c_backgroundColor) {
-    const transformedColor = data.c_backgroundColor.replace(/\s+/g, '').toLowerCase();
-    backgroundColor = `--backgroundColor: ${transformedColor}`;
-  } else {
-    backgroundColor = `--backgroundColor: white`;
-  }
-
+  const backgroundColor = `--backgroundColor: ${transformColor(data?.c_backgroundColor)}`;
 
   return (
     <>
-      <style>:root {`{${backgroundColor}}`}</style>
+      <style>{`:root {${backgroundColor}}`}</style>
       <AnalyticsProvider templateData={templateData}>
-        <div className="min-h-screen" >
+        <div className="min-h-screen">
           <AnalyticsScopeProvider name="header">
-            <Header data={data}/>
+            <Header data={data} />
           </AnalyticsScopeProvider>
           {children}
           <AnalyticsScopeProvider name="footer">
-            <Footer data={data} templateData={templateData.document} />
+            <Footer data={data} templateData={templateData?.document} />
           </AnalyticsScopeProvider>
         </div>
       </AnalyticsProvider>
