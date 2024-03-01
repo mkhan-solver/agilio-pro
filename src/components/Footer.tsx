@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { formatPhoneNumberIntl } from "react-phone-number-input";
-import { Instagram, Twitter } from "../assets/svgs/SocialIcons";
+import { FaPhoneAlt, FaEnvelope, FaClock, FaInstagram, FaTwitter, FaRegCopyright } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 interface FooterProps {
   data: any;
@@ -72,11 +73,19 @@ const Footer = ({ data, templateData }: FooterProps) => {
               <div className='content_info'>
                 <ul>
                   <li>
+                    <FaLocationDot />
+                    <a href={`https://www.google.com/maps/place/${dynamicAddress}`}>
+                      {`${address?.line1}, ${address?.city}, ${address?.countryCode}, ${address?.postalCode}`}
+                    </a>
+                  </li>
+                  <li>
+                    <FaPhoneAlt />
                     <a href={`tel:${mainPhone}`}>
                       {formatPhoneNumberIntl(mainPhone)}
                     </a>
                   </li>
                   <li>
+                    <FaEnvelope />
                     <a href='mailto:office@arcticairav.com'>
                       {emails?.[0] || '-'}
                     </a>
@@ -87,12 +96,12 @@ const Footer = ({ data, templateData }: FooterProps) => {
                 <ul>
                   <li>
                     <a href='#'>
-                      <Twitter width={'20px'} height={'20px'}/>
+                      <FaTwitter />
                     </a>
                   </li>
                   <li>
                     <a href='#'>
-                      <Instagram width={'20px'} height={'20px'} />
+                      <FaInstagram/>
                     </a>
                   </li>
                 </ul>
@@ -153,6 +162,7 @@ const Footer = ({ data, templateData }: FooterProps) => {
                 <ul>
                   {formatOpeningHours(templateData?.hours).map(item => (
                     <li>
+                      <FaClock />
                       <p>{item.day} : {item.openIntervals === 'Closed'? item.openIntervals: `${item.openIntervals[0].start} - ${item.openIntervals[0].end}`}</p>
                     </li>
                   ))}
@@ -201,6 +211,7 @@ const Footer = ({ data, templateData }: FooterProps) => {
         <Col>
           <Container>
             <p>
+              <FaRegCopyright/>
               {year}. All rights reserved by <a href='/' style={{ textTransform: 'uppercase' }}>{name}</a>.
             </p>
           </Container>
