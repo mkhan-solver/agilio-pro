@@ -13,8 +13,6 @@ import Schema from "../components/Schema";
 import InnerPagesBanner from "../components/InnerPagesBanner";
 import InnerPageLayout from "../components/InnerPageLayout";
 
-
-
 export const config: TemplateConfig = {
     stream: {
         $id: "pages",

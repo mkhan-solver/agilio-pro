@@ -10,6 +10,16 @@ export interface HeaderProps {
 const Header = ({ data }: HeaderProps) => {
   let phone = data?.mainPhone ? data.mainPhone : "+12-345678910";
 
+  // if (navigationItem?.subItem?.length > 0) {
+  //   return (
+  //     <NavDropdown key={index} title={navigationItem.label} id="navbarScrollingDropdown">
+  //       {
+  //         navigationItem.subItem.map((child: any) => (<NavDropdown.Item key={child.slug} href={`/${child.slug}`}>{child.name}</NavDropdown.Item>))
+  //       }
+  //     </NavDropdown>
+  //   )
+  // }
+
   return (
     <div className='headerwrapper fixed-top pt-2 pt-md-4'>
       <Container>
@@ -18,18 +28,18 @@ const Header = ({ data }: HeaderProps) => {
             <Navbar.Collapse id="navbarScroll" role="" >
               <Nav navbarScroll >
                 {data?.c_navigation?.map((navigationItem: any, index: number) => {
-                  if (navigationItem?.subItem?.length > 0) {
-                    return (
-                      <NavDropdown key={index} title={navigationItem.label} id="navbarScrollingDropdown">
-                        {
-                          navigationItem.subItem.map((child: any) => (<NavDropdown.Item key={child.slug} href={`/${child.slug}`}>{child.name}</NavDropdown.Item>))
-                        }
-                      </NavDropdown>
-                    )
+                  if(navigationItem?.label === "Home"){
+                    return (<Nav.Link key={index} href={'/'}>{navigationItem.label}</Nav.Link>)
                   }
-                  if (navigationItem?.label != 'Blog') {
-                    return (<Nav.Link key={index} href={`${navigationItem.uRL}`}>{navigationItem.label}</Nav.Link>)
+                  if(navigationItem?.label === "Services"){
+                    return (<Nav.Link key={index} href={'#services'}>{navigationItem.label}</Nav.Link>)
                   }
+                  if(navigationItem?.label === "Contact Us"){
+                    return (<Nav.Link key={index} href={'#contact-us'}>{navigationItem.label}</Nav.Link>)
+                  }
+                  // if (navigationItem?.label != 'Blog') {
+                  //   return (<Nav.Link key={index} href={`${navigationItem.uRL}`}>{navigationItem.label}</Nav.Link>)
+                  // }
                 })}
               </Nav>
             </Navbar.Collapse>
@@ -52,7 +62,6 @@ const Header = ({ data }: HeaderProps) => {
               </a> */}
               <a href={`tel:${phone}`}>
                 <Button className="rounded btn-lg fw-bold" variant="dark">
-                  {/* <BiPhone size="25px" style={{ transform: 'rotate(250deg)' }} /> */}
                   <BiPhone size="25px" />
                   {formatPhoneNumberIntl(phone)}
                 </Button>

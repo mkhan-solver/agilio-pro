@@ -107,7 +107,7 @@ const Content = ({ description, data, faq }: AboutProps) => {
         <section className='our-service-section'>
           <Container>
             <Row className='mb-4'>
-              <Col>
+              <Col id="services">
                 <h2 className='heading fw-bold'>Our Services</h2>
               </Col>
               <Col className='text-end'>
@@ -134,28 +134,6 @@ const Content = ({ description, data, faq }: AboutProps) => {
           </Container>
         </section>
       }
-      {/* <section className='brand-we-section'>
-        <Container>
-          <Row className='mb-4'>
-            <Col>
-              <h2 className='text-center heading fw-bold'>Brands We offer.</h2>
-            </Col>
-          </Row>
-          <Row className='mb-4'>
-            <Col className='text-center'>
-              <Carousel>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-                <div className='mx-2'><img alt='Logo' src={`/src/assets/images/air-con.svg`} className='img-fluid'></img></div>
-              </Carousel>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
       <section className='get-a-quote-section'>
         <Container>
           <Row className='mb-4'>
@@ -174,29 +152,22 @@ const Content = ({ description, data, faq }: AboutProps) => {
           </Row>
         </Container>
       </section>
-      {/* <section className='faq-section'>
+      <section className="pt-80px">
         <Container>
-          <Row className='mb-4'>
-            <Col>
-              <h2 className='text-center heading fw-bold'>FAQs</h2>
+          <Row gap={3} className="flex-column-reverse flex-lg-row">
+            <Col lg={7}>
+              <div id="contact-us">
+                <h2 className='heading fw-bold'>Contact Us</h2>
+              </div>
             </Col>
-          </Row>
-          <Row className='mb-4'>
-            <Col>
-              <Accordion defaultActiveKey="0">
-                {faq?.map((value: any, index: number) => {
-                    return (
-                      <Accordion.Item key={value.question} eventKey={`${index}`}>
-                        <Accordion.Header>{value.question}</Accordion.Header>
-                        <Accordion.Body dangerouslySetInnerHTML={{ __html: value?.answerV2?.html }}></Accordion.Body>
-                      </Accordion.Item>
-                    )
-                })}
-              </Accordion>
+            <Col lg={5}>
+              <div className="bg-light p-4 p-md-5 shadow-sm rounded">
+                <HubspotForm />
+              </div>
             </Col>
           </Row>
         </Container>
-      </section> */}
+      </section>
       <section className='service-area-section'>
         <Row className=''>
           <Col lg={12}>
@@ -208,7 +179,6 @@ const Content = ({ description, data, faq }: AboutProps) => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               src={`https://www.google.com/maps/embed/v1/place?key=${YEXT_PUBLIC_GOOGLE_MAP_API_KEY}&q==${encodeURIComponent(dynamicAddress)}&center=${data?.yextDisplayCoordinate?.latitude},${data?.yextDisplayCoordinate?.longitude}`}
-            // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48873.36734203019!2d-76.34154879880614!3d40.04003386764921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6248b917214b9%3A0xb46790d030dbd2d6!2sLancaster%2C%20PA%2C%20USA!5e0!3m2!1sen!2sin!4v1695631060701!5m2!1sen!2sin"
             >
             </iframe>
           </Col>
