@@ -29,7 +29,7 @@ const Header = ({ data }: HeaderProps) => {
               <Nav navbarScroll >
                 {data?.c_navigation?.map((navigationItem: any, index: number) => {
                   if(navigationItem?.label === "Home"){
-                    return (<Nav.Link key={index} href={'/'}>{navigationItem.label}</Nav.Link>)
+                    return (<Nav.Link key={index} href={'#home'}>{navigationItem.label}</Nav.Link>)
                   }
                   if(navigationItem?.label === "Services"){
                     return (<Nav.Link key={index} href={'#services'}>{navigationItem.label}</Nav.Link>)
