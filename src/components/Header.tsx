@@ -16,6 +16,16 @@ const Header = ({ data }: HeaderProps) => {
     setShowModal(!showModal);
   };
 
+  // if (navigationItem?.subItem?.length > 0) {
+  //   return (
+  //     <NavDropdown key={index} title={navigationItem.label} id="navbarScrollingDropdown">
+  //       {
+  //         navigationItem.subItem.map((child: any) => (<NavDropdown.Item key={child.slug} href={`/${child.slug}`}>{child.name}</NavDropdown.Item>))
+  //       }
+  //     </NavDropdown>
+  //   )
+  // }
+
   return (
     <>
       <div className='headerwrapper py-1'>
