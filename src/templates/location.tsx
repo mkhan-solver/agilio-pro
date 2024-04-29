@@ -29,35 +29,29 @@ export const config: TemplateConfig = {
       "name",
       "address",
       "description",
-      "hours",
       "slug",
       "services",
-      "paymentOptions",
+      "c_serviceArea",
       "emails",
       "yextDisplayCoordinate",
       "c_backgroundColor",
-      "c_ourMission",
-      "c_whyChooseUs",
-      "c_whatToExpect",
       "c_heroSection",
-      "c_frontPageServiceList.name",
-      "c_frontPageServiceList.description",
-      "c_frontPageServiceList.photoGallery",
-      "c_frontPageServiceList.slug",
       "c_coverPhoto",
       "c_coverPhotoHeading",
       "c_coverPhotoDescription",
-      "c_whySectionImage",
-      "c_truckImage",
       "instagramHandle",
       "twitterHandle",
+      "c_review",
+      "c_businessDescription",
+      "c_serviceOfferings",
+      "c_trade",
+      "c_subServiceAreas",
     ],
     localization: {
       locales: [YEXT_PUBLIC_LOCATION_LOCALE_CODE],
     },
     transform: {
       replaceOptionValuesWithDisplayNames: [
-        "paymentOptions",
         "c_backgroundColor"
       ],
     },
@@ -104,17 +98,27 @@ const Location: Template<TemplateRenderProps> = ({
 
   const {
     name,
-    description,
     c_coverPhoto,
-    c_coverPhotoDescription
+    c_coverPhotoDescription,
+    c_coverPhotoHeading,
+    c_serviceArea,
+    c_trade
   } = document;
 
   return (
     <>
       <Schema data={document} />
       <PageLayout data={document?._site} templateData={{ __meta, document }}>
-        <Banner name={name} coverPhoto={c_coverPhoto} description={c_coverPhotoDescription} />
-        <Content description={description} data={document} faq={faqDataProvider} />
+        <Banner
+          phoneNumber={document._site.mainPhone}
+          name={name}
+          coverPhotoHeading={c_coverPhotoHeading}
+          coverPhoto={c_coverPhoto}
+          description={c_coverPhotoDescription}
+          serviceArea={c_serviceArea}
+          trade={c_trade}
+        />
+        <Content data={document} faq={faqDataProvider} />
       </PageLayout>
     </>
   );
