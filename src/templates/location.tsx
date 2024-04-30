@@ -42,7 +42,7 @@ export const config: TemplateConfig = {
       "instagramHandle",
       "twitterHandle",
       "c_review",
-      "c_businessDescription",
+      "c_businessExperience",
       "c_serviceOfferings",
       "c_trade",
       "c_subServiceAreas",

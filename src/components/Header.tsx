@@ -16,16 +16,6 @@ const Header = ({ data }: HeaderProps) => {
     setShowModal(!showModal);
   };
 
-  // if (navigationItem?.subItem?.length > 0) {
-  //   return (
-  //     <NavDropdown key={index} title={navigationItem.label} id="navbarScrollingDropdown">
-  //       {
-  //         navigationItem.subItem.map((child: any) => (<NavDropdown.Item key={child.slug} href={`/${child.slug}`}>{child.name}</NavDropdown.Item>))
-  //       }
-  //     </NavDropdown>
-  //   )
-  // }
-
   return (
     <>
       <div className='headerwrapper py-1'>
@@ -33,7 +23,7 @@ const Header = ({ data }: HeaderProps) => {
           <Navbar expand="xl" className='bg rounded px-3 row' >
             <div className="col-6 col-xl-6 justify-content-start d-flex">
               <Navbar.Brand  href="#">
-                <img width={80} height={80} src={data?.logo?.image?.url}></img>
+                <img width={120} height={120} src={data.logo.image.url}></img>
                 {/* <img src={`/src/assets/images/smart_hvac.png`}></img> */}
               </Navbar.Brand>
             </div>

@@ -10,7 +10,7 @@ export interface AboutProps {
 }
 
 const Content = ({ data }: AboutProps) => {
-  const { address, name, c_review, c_businessDescription, c_serviceOfferings, c_subServiceAreas, c_serviceArea, services, c_trade } = data
+  const { address, name, c_review, c_serviceOfferings, c_subServiceAreas, c_serviceArea, services, c_trade, c_businessExperience } = data
   const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
 
   const [showModal, setShowModal] = React.useState(false);
@@ -29,7 +29,7 @@ const Content = ({ data }: AboutProps) => {
             </Col>
           </Row>
           <Row gap={3} className="align-items-center flex-column-reverse flex-lg-row justify-content-between">
-            {c_review.map((item: any, index: any) => {
+            {c_review && c_review?.map((item: any, index: any) => {
               return (
                 <Col xs={12} md={4} key={index}>
                   <div>
@@ -51,7 +51,7 @@ const Content = ({ data }: AboutProps) => {
       </section>
       <section className='why-section'>
         <Container>
-          <h2 className="offer-heading">{services[0]} Services {name} Offers</h2>
+          <h2 className="offer-heading">{services[0] || 'Akshay'} Services {name} Offers</h2>
           <Row>
             <Col lg={6}>
               {c_serviceOfferings && c_serviceOfferings.map((item:any, index: any) => {
@@ -111,8 +111,7 @@ const Content = ({ data }: AboutProps) => {
               <h4 className='heading fw-bold special-heading'>{c_serviceArea}'s #1 Choice for {c_trade}</h4>
             </Col>
             <Col className='text-start'>
-              {/* <p className="special-text mb-4">{c_businessDescription}</p> */}
-              <p className="special-text mb-4">For more than 10 years, {name} has served the {c_serviceArea} area. Our licensed, trained and insured technicians are backed by our 100% satisfaction guarantee.</p>
+              <p className="special-text mb-4">For more than {c_businessExperience} years, {name} has served the {c_serviceArea} area. Our licensed, trained and insured technicians are backed by our 100% satisfaction guarantee.</p>
               <Button className="btn-lg mt-3 btn-cus" variant="success" onClick={() => toggleModal()}>
                 Get A Free Estimate
               </Button>
