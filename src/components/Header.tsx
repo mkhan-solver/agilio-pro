@@ -21,23 +21,13 @@ const Header = ({ data }: HeaderProps) => {
       <div className='headerwrapper py-1'>
         <Container>
           <Navbar expand="xl" className='bg rounded px-3 row' >
-            <div className="col-6 col-xl-6 justify-content-start d-flex">
+            <div className="col-12 col-xl-6 col-sm-4 justify-content-md-start justify-content-center d-flex">
               <Navbar.Brand  href="#">
-                <img width={120} height={120} src={data.logo.image.url}></img>
-                {/* <img src={`/src/assets/images/smart_hvac.png`}></img> */}
+                <img src={data.logo.image.url} className="img-fluid"></img>
               </Navbar.Brand>
             </div>
-            <div className="col-6 col-xl-6 justify-content-end d-flex">
-              <div className='d-md-flex d-none gap-3 me-3'>
-                {/* <a>
-                  <Button className="rounded btn-lg fw-bold" variant="outline-dark">
-                    <BiCalendar style={{ marginRight: '3px' }} size="25px" />
-                    Schedule Now
-                  </Button>
-                </a> */}
-                {/* <a href='#'>
-                  <img alt='Logo' src={data?.c_googleReview ? data?.c_googleReview.image.url: `/src/assets/images/5Stars.webp`} width={100}></img>
-                </a> */}
+            <div className="col-12 col-xl-6 col-sm-8 justify-content-end d-flex">
+              <div className='d-flex gap-3 me-3'>
                 <Link href={`tel:${phone}`}>
                   <Button className="btn-lg btn-cus" variant="outline-dark">
                     Call or Text {formatPhoneNumberIntl(phone)}
@@ -47,7 +37,6 @@ const Header = ({ data }: HeaderProps) => {
                   Get A Free Estimate
                 </Button>
               </div>
-              <Navbar.Toggle aria-controls="navbarScroll" />
             </div>
           </Navbar>
         </Container>

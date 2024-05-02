@@ -8,7 +8,6 @@ import {
   TemplateProps,
   TemplateRenderProps,
 } from "@yext/pages";
-import { fetch } from "@yext/pages/util";
 import "../index.css";
 import Favicon from "../assets/images/yext-favicon.ico";
 import Content from "../components/Content";
@@ -35,7 +34,6 @@ export const config: TemplateConfig = {
       "emails",
       "yextDisplayCoordinate",
       "c_backgroundColor",
-      "c_heroSection",
       "c_coverPhoto",
       "c_coverPhotoHeading",
       "c_coverPhotoDescription",
@@ -82,19 +80,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 
 const Location: Template<TemplateRenderProps> = ({
   __meta,
-  relativePrefixToRoot,
   document,
 }) => {
-  const [faqDataProvider, setFaqData] = React.useState([])
-  const getCustomerId = async () => {
-    const localApiRequest = await fetch("/customerDetail?type=faq")
-    const response = await localApiRequest.json()
-   
-    setFaqData(response?.response?.entities)
-  }
-  React.useEffect(() => {
-    getCustomerId()
-  }, []);
 
   const {
     name,
@@ -118,7 +105,7 @@ const Location: Template<TemplateRenderProps> = ({
           serviceArea={c_serviceArea}
           trade={c_trade}
         />
-        <Content data={document} faq={faqDataProvider} />
+        <Content data={document} />
       </PageLayout>
     </>
   );

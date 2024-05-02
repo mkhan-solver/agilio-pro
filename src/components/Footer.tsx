@@ -25,15 +25,15 @@ const Footer = ({ data }: FooterProps) => {
       <footer>
         <Container>
           <Row>
-            <Col lg={3}>
+            <Col xs={12} lg={3} className="justify-content-center d-flex justify-content-lg-start">
               <div className='logo-wrap'>
                 <a href='#' className='d-block mb-3' style={{width: 100}}>
                   {/* <img alt='Logo' src={`/src/assets/images/smart_hvac.png`} className='footer_logo'></img> */}
-                  <img width={100} height={100} src={data?.logo?.image?.url} className='footer_logo'></img>
+                  <img width={100} height={'auto'} src={data?.logo?.image?.url} className='footer_logo'></img>
                 </a>
               </div>
             </Col>
-            <Col lg={6} className="justify-content-center align-items-center d-flex">
+            <Col lg={6} className="justify-content-center align-items-center d-flex mb-3">
               <Link href={`tel:${mainPhone}`}>
                 <Button className="btn-lg btn-cus" variant="outline-secondary">
                   Call or Text {mainPhone}
@@ -45,7 +45,7 @@ const Footer = ({ data }: FooterProps) => {
                 Get a Free Estimate
               </Button>
             </Col>
-            <Col lg={3} className="justify-content-end d-flex footer-social-icons align-items-center">
+            <Col lg={3} className="justify-content-center justify-content-lg-end d-flex footer-social-icons align-items-center mb-3">
               <ul>
                 <li>
                   <a href='#'>

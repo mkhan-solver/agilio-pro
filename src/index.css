@@ -630,7 +630,7 @@ footer {
     /* transform: scale(1.1); */
     padding: 5px 15px;
     background: #fff;
-    max-width: 90px;
+    /* max-width: 90px; */
   }
   .right-form-hero {
     margin-top: -170px;
@@ -653,5 +653,33 @@ footer {
   .navbar-toggler {
     font-size: 14px;
     padding: 3px 5px;
+  }
+
+  .why-us-number {
+    font-size: 42px;
+    width: 56px;
+    height: 56px;
+    line-height: 56px;
+  }
+
+  .why-us-number-main::after{
+    height: 320px;
+  }
+}
+@media (max-width: 991px) {
+  .why-us-number-main::after{
+    height: 280px;
+  }
+}
+
+@media (max-width: 767px) {
+  .why-us-number {
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+  }
+  .why-us-number-main::after{
+    height: 330px;
   }
 }

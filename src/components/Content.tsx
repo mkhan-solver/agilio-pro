@@ -6,12 +6,10 @@ import FormModal from "./FormModal";
 
 export interface AboutProps {
   data: any;
-  faq: any;
 }
 
 const Content = ({ data }: AboutProps) => {
-  const { address, name, c_review, c_serviceOfferings, c_subServiceAreas, c_serviceArea, services, c_trade, c_businessExperience } = data
-  const dynamicAddress = `${address.line1}, ${address.city}, ${address.region}, ${address.postalCode}`
+  const { name, c_review, c_serviceOfferings, c_subServiceAreas, c_serviceArea, services, c_trade, c_businessExperience } = data
 
   const [showModal, setShowModal] = React.useState(false);
 
@@ -23,15 +21,15 @@ const Content = ({ data }: AboutProps) => {
     <>
       <section className='residential-section'>
         <Container>
-          <Row gap={3} className="align-items-center flex-column-reverse flex-lg-row">
+          <Row gap={3} className="align-items-center flex-lg-row">
             <Col xs={12}>
               <p className="fw-bold mb-5 review-heading">What do our customers have to say?</p>
             </Col>
           </Row>
-          <Row gap={3} className="align-items-center flex-column-reverse flex-lg-row justify-content-between">
+          <Row gap={3} className="align-items-top flex-lg-row justify-content-between">
             {c_review && c_review?.map((item: any, index: any) => {
               return (
-                <Col xs={12} md={4} key={index}>
+                <Col xs={12} md={4} className="mb-4" key={index}>
                   <div>
                     <FaStar size="25px" />
                     <FaStar size="25px" />
@@ -107,10 +105,10 @@ const Content = ({ data }: AboutProps) => {
       <section className='our-service-section'>
         <Container>
           <Row className='mb-4'>
-            <Col id="services">
+            <Col xs={12} sm={6} id="services">
               <h4 className='heading fw-bold special-heading'>{c_serviceArea}'s #1 Choice for {c_trade}</h4>
             </Col>
-            <Col className='text-start'>
+            <Col xs={12} sm={6} className='text-start'>
               <p className="special-text mb-4">For more than {c_businessExperience} years, {name} has served the {c_serviceArea} area. Our licensed, trained and insured technicians are backed by our 100% satisfaction guarantee.</p>
               <Button className="btn-lg mt-3 btn-cus" variant="success" onClick={() => toggleModal()}>
                 Get A Free Estimate

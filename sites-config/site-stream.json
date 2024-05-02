@@ -10,16 +10,9 @@
         "c_footerLogo",
         "mainPhone",
         "c_backgroundColor",
-        "c_navigation.label",
-        "c_navigation.uRL",
-        "c_navigation.subItem.name",
-        "c_navigation.subItem.slug",
         "emails",
         "address",
-        "description",
-        "c_frontPageServiceList.name",
-        "c_frontPageServiceList.slug",
-        "c_truckImage"
+        "description"
     ],
     "localization": {
         "locales": [

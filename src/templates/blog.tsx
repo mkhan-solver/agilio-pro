@@ -23,7 +23,6 @@ export const config: TemplateConfig = {
       "c_coverPhoto",
       "bodyV2",
       "description",
-      "c_metaDescription",
       "keywords",
     ],
     filter: {
@@ -51,7 +50,6 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
         type: "meta",
         attributes: {
           name: "description",
-          content: document.c_metaDescription,
         },
       },
       {

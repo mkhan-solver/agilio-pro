@@ -30,7 +30,7 @@ const Banner = ({ coverPhotoHeading, phoneNumber, coverPhoto, serviceArea, trade
           <Container>
             <Row>
               <Col xs={12} md={12} lg={6}>
-                <div className="me-lg-5">
+                <div className="me-lg-5 mb-5 me-sm-5" >
                   <p className='hero-heading'>{coverPhotoHeading}</p>
                   {/* <h1 className='hero-description'>{description}</h1> */}
                   <h1 className='hero-description'>{trade} Service in the {serviceArea} Area</h1>
