@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { FaInstagram, FaTwitter, FaRegCopyright } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaRegCopyright, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import FormModal from "./FormModal";
 import { Link } from "@yext/sites-components";
 
@@ -9,9 +9,9 @@ interface FooterProps {
   templateData: any;
 }
 
-const year = new Date().getFullYear();
+// const year = new Date().getFullYear();
 
-const Footer = ({ data }: FooterProps) => {
+const Footer = ({ data, templateData }: FooterProps) => {
   const { mainPhone } = data || {};
 
   const [showModal, setShowModal] = React.useState(false);
@@ -36,7 +36,7 @@ const Footer = ({ data }: FooterProps) => {
             <Col lg={6} className="justify-content-center align-items-center d-flex mb-3">
               <Link href={`tel:${mainPhone}`}>
                 <Button className="btn-lg btn-cus" variant="outline-secondary">
-                  Call or Text {mainPhone}
+                  Call {mainPhone}
                 </Button>
               </Link>
               {/* <a className="mx-2">
@@ -47,16 +47,41 @@ const Footer = ({ data }: FooterProps) => {
             </Col>
             <Col lg={3} className="justify-content-center justify-content-lg-end d-flex footer-social-icons align-items-center mb-3">
               <ul>
-                <li>
-                  <a href='#'>
-                    <FaTwitter />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <FaInstagram/>
-                  </a>
-                </li>
+                {templateData?.instagramHandle &&
+                  <li>
+                    <a href={templateData?.instagramHandle}>
+                      <FaTwitter />
+                    </a>
+                  </li>
+                }
+                {templateData?.twitterHandle && 
+                  <li>
+                    <a href={templateData?.twitterHandle}>
+                      <FaInstagram/>
+                    </a>
+                  </li>
+                }
+                {templateData?.facebookPageUrl &&
+                  <li>
+                    <a href='#'>
+                      <FaFacebook/>
+                    </a>
+                  </li>
+                }
+                {templateData?.linkedInUrl &&
+                  <li>
+                    <a href='#'>
+                      <FaLinkedin/>
+                    </a>
+                  </li>
+                }
+                {templateData?.youTubeChannelUrl &&
+                  <li>
+                    <a href='#'>
+                      <FaYoutube/>
+                    </a>
+                  </li>
+                }
               </ul>
             </Col>
           </Row>
@@ -67,11 +92,11 @@ const Footer = ({ data }: FooterProps) => {
           <Container className="d-flex justify-content-center align-items-center footer-link">
             <p>
               <FaRegCopyright/>
-              {year}. All rights reserved.
+              {templateData?.c_copyrightText}
             </p>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookies Settings</a>
+            <a href={templateData?.c_privacyPolicy}>Privacy Policy</a>
+            <a href={templateData?.c_termsAndCondition}>Terms of Service</a>
+            <a href={templateData?.c_cookiesSettings}>Cookies Settings</a>
           </Container>
         </Col>
       </Row>

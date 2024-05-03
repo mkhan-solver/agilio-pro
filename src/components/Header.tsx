@@ -21,19 +21,19 @@ const Header = ({ data }: HeaderProps) => {
       <div className='headerwrapper py-1'>
         <Container>
           <Navbar expand="xl" className='bg rounded px-3 row' >
-            <div className="col-12 col-xl-6 col-sm-4 justify-content-md-start justify-content-center d-flex">
+            <div className="col-6 col-xl-6 col-sm-4 justify-content-md-start justify-content-center d-flex">
               <Navbar.Brand  href="#">
-                <img src={data.logo.image.url} className="img-fluid"></img>
+                <img width={"80%"} src={data.logo.image.url} className="img-fluid"></img>
               </Navbar.Brand>
             </div>
-            <div className="col-12 col-xl-6 col-sm-8 justify-content-end d-flex">
+            <div className="col-6 col-xl-6 col-sm-8 justify-content-end d-flex">
               <div className='d-flex gap-3 me-3'>
                 <Link href={`tel:${phone}`}>
-                  <Button className="btn-lg btn-cus" variant="outline-dark">
-                    Call or Text {formatPhoneNumberIntl(phone)}
+                  <Button className="btn-lg btn-cus btn-call" variant="outline-dark">
+                    Call {formatPhoneNumberIntl(phone)}
                   </Button>
                 </Link>
-                <Button onClick={() => toggleModal()} className="btn-lg btn-cus" variant="success">
+                <Button onClick={() => toggleModal()} className="btn-lg btn-cus est-btn" variant="success">
                   Get A Free Estimate
                 </Button>
               </div>

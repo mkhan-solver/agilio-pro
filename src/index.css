@@ -125,6 +125,11 @@ a {
   line-height: 70px;
   color: #f0e8e8;
 }
+
+.col-6.col-xl-6.col-sm-8.justify-content-end.d-flex{
+  padding: 0;
+}
+
 .hero-description {
   font-weight: 300;
   font-size: 30px;
@@ -186,7 +191,7 @@ a {
 .footer-link a{
   color: #000 !important;
   text-decoration: underline !important;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .steps-heading{
@@ -681,5 +686,10 @@ footer {
   }
   .why-us-number-main::after{
     height: 330px;
+  }
+}
+@media (max-width: 560px){
+  .est-btn{
+    display: none !important;
   }
 }
