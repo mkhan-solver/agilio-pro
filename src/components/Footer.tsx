@@ -96,7 +96,7 @@ const Footer = ({ data, templateData }: FooterProps) => {
             </p>
             <a href={templateData?.c_privacyPolicy}>Privacy Policy</a>
             <a href={templateData?.c_termsAndCondition}>Terms of Service</a>
-            <a href={templateData?.c_cookiesSettings}>Cookies Settings</a>
+            <a href={templateData?.c_cookiesSettings}>Cookies Settings </a>
           </Container>
         </Col>
       </Row>
