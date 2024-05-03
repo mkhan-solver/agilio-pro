@@ -49,7 +49,7 @@ const Content = ({ data }: AboutProps) => {
       </section>
       <section className='why-section'>
         <Container>
-          <h2 className="offer-heading">{services[0] || 'Akshay'} Services {name} Offers</h2>
+          <h2 className="offer-heading">{services[0] || ''} Services {name} Offers</h2>
           <Row>
             <Col lg={6}>
               {c_serviceOfferings && c_serviceOfferings.map((item:any, index: any) => {
