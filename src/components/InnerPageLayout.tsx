@@ -11,30 +11,30 @@ export interface InnerPageLayoutProps {
 
 const InnerPageLayout = ({ data }: InnerPageLayoutProps) => {
     const dynamicAddress = `${data?._site?.address?.line1}, ${data?._site?.address?.city}, ${data?._site?.address?.region}, ${data?._site?.address?.postalCode}`
-    if (data?.c_blogList) {
-        return (<section className='our-service-section'>
-            <Container>
-                <Row gap={4} className="flex-column-reverse flex-lg-row">
-                    {
-                        data?.c_blogList?.map((blogArr: any) => (
-                            <Col lg={3} className='mb-3'>
-                                <div className='card-wrap bg-white rounded overflow-hidden shadow h-100'>
-                                    <div className='card-image-wrap'>
-                                        <img alt='Logo' src={`https://wmmedia.sgp1.cdn.digitaloceanspaces.com/blog.png`} className='w-100 img-fluid card-image'></img>
-                                    </div>
-                                    <div className='content-card text-center p-4 pb-5'>
-                                        <h5 className='my-3'>{blogArr?.name}</h5>
-                                        <p>{blogArr.description}</p>
-                                        <a href={`/${blogArr?.slug}`} className='link_bold fw-bold'>Read More »</a>
-                                    </div>
-                                </div>
-                            </Col>
-                        ))
-                    }
-                </Row>
-            </Container>
-        </section>)
-    }
+    // if (data?.c_blogList) {
+    //     return (<section className='our-service-section'>
+    //         <Container>
+    //             <Row gap={4} className="flex-column-reverse flex-lg-row">
+    //                 {
+    //                     data?.c_blogList?.map((blogArr: any) => (
+    //                         <Col lg={3} className='mb-3'>
+    //                             <div className='card-wrap bg-white rounded overflow-hidden shadow h-100'>
+    //                                 <div className='card-image-wrap'>
+    //                                     <img alt='Logo' src={`https://wmmedia.sgp1.cdn.digitaloceanspaces.com/blog.png`} className='w-100 img-fluid card-image'></img>
+    //                                 </div>
+    //                                 <div className='content-card text-center p-4 pb-5'>
+    //                                     <h5 className='my-3'>{blogArr?.name}</h5>
+    //                                     <p>{blogArr.description}</p>
+    //                                     <a href={`/${blogArr?.slug}`} className='link_bold fw-bold'>Read More »</a>
+    //                                 </div>
+    //                             </div>
+    //                         </Col>
+    //                     ))
+    //                 }
+    //             </Row>
+    //         </Container>
+    //     </section>)
+    // }
 
     return (<>
         <section className='residential-section'>

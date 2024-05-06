@@ -23,11 +23,6 @@ export const config: TemplateConfig = {
             "photoGallery",
             "bodyV2",
             "description",
-            "c_blogList.name",
-            "c_blogList.bodyV2",
-            "c_blogList.slug",
-            "c_blogList.description",
-            "c_blogList.c_coverPhoto",
         ],
         filter: {
             entityTypes: ["ce_pages"],
